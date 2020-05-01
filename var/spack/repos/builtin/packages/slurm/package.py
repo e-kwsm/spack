@@ -23,7 +23,10 @@ class Slurm(AutotoolsPackage):
 
     homepage = 'https://slurm.schedmd.com'
     url = 'https://github.com/SchedMD/slurm/archive/slurm-19-05-6-1.tar.gz'
+    git = 'https://github.com/SchedMD/slurm.git'
+    list_url = 'https://github.com/SchedMD/slurm/releases'
 
+    version('master', branch='master')
     version('19-05-6-1', sha256='1b83bce4260af06d644253b1f2ec2979b80b4418c631e9c9f48c2729ae2c95ba')
     version('19-05-5-1', sha256='e53e67bd0bb4c37a9c481998764a746467a96bc41d6527569080514f36452c07')
     version('18-08-9-1', sha256='32eb0b612ca18ade1e35c3c9d3b4d71aba2b857446841606a9e54d0a417c3b03')
