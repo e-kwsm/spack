@@ -9,6 +9,11 @@ class Rdkit(CMakePackage):
     git = 'https://github.com/rdkit/rdkit.git'
 
     version('master', branch='master')
+    version('2020_03_5', tag='Release_2020_03_5')
+    version('2020_03_4', tag='Release_2020_03_4')
+    version('2020_03_3', tag='Release_2020_03_3')
+    version('2020_03_2', tag='Release_2020_03_2')
+    version('2020_03_1', tag='Release_2020_03_1')
     version('2019_09_3', tag='Release_2019_09_3')
     version('2019_09_2', tag='Release_2019_09_2')
     version('2019_09_1', tag='Release_2019_09_1')
@@ -16,13 +21,6 @@ class Rdkit(CMakePackage):
     version('2019_03_3', tag='Release_2019_03_3')
     version('2019_03_2', tag='Release_2019_03_2')
     version('2019_03_1', tag='Release_2019_03_1')
-    version('2018_09_3', tag='Release_2018_09_3')
-    version('2018_09_2', tag='Release_2018_09_2')
-    version('2018_09_1', tag='Release_2018_09_1')
-    version('2018_03_4', tag='Release_2018_03_4')
-    version('2018_03_3', tag='Release_2018_03_3')
-    version('2018_03_2', tag='Release_2018_03_2')
-    version('2018_03_1', tag='Release_2018_03_1')
 
     variant('eigen', default=True, description='Enable Eigen binding')
     variant('postgresql', default=False, description='Build the PostgreSQL cartridge')
@@ -47,7 +45,9 @@ class Rdkit(CMakePackage):
     def cmake_args(self):
         args = []
         if 'python' in self.spec:
-            args = +['-DPYTHON_EXECUTABLE={0}'.format(
-                self.spec['python'].command.path)
+            args = +[
+                '-DCMAKE_INSTALL_PREFIX={0}'.format(self.spec.prefix),
+                '-DPYTHON_EXECUTABLE={0}'.format(self.spec['python'].command.path),
+                '-DRDK_INSTALL_INTREE=NO',
             ]
         return args
