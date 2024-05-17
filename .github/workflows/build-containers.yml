@@ -55,7 +55,7 @@ jobs:
     if: github.repository == 'spack/spack'
     steps:
       - name: Checkout
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # @v2
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # @v2
 
       - uses: docker/metadata-action@8e5442c4ef9f78752691e2d8f8d19755c6f78e81
         id: docker_meta
